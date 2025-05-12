@@ -41,6 +41,18 @@ app.get('/success', async (req, res) => {
 app.get('/cancel', (req, res) => {
   res.send('<h2>❌ Payment canceled</h2>');
 });
+// ✅ Landing page for users
+app.get('/', (req, res) => {
+  res.send('<a href="/checkout">Click here to subscribe</a>');
+});
+
+app.get('/checkout', (req, res) => {
+  res.send(`
+    <form action="/create-checkout-session" method="POST">
+      <button type="submit">Subscribe for Deals Access</button>
+    </form>
+  `);
+});
 
 const PORT = process.env.PORT || 4242;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
